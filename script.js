@@ -85,7 +85,11 @@ const color1Input = document.getElementById("color1");
 const color2Input = document.getElementById("color2");
 
 settingsBtn.addEventListener("click", () => {
+  // Toggle settings panel visibility
   settingsPanel.classList.toggle("hidden");
+
+  // Apply the current selected colors
+  applyColors();
 });
 
 function applyColors() {
@@ -93,7 +97,9 @@ function applyColors() {
   document.querySelector(".container").style.backgroundColor = color2Input.value;
 }
 
+// Update live as user picks
 color1Input.addEventListener("input", applyColors);
 color2Input.addEventListener("input", applyColors);
+
 
 updateDisplay();
