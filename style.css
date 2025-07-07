@@ -19,7 +19,7 @@ body {
 
 .tabs {
   display: flex;
-  justify-content: space-between;
+  justify-content: centre;
   flex-wrap: wrap;
   gap: 2px;
   margin-bottom: 10px;
