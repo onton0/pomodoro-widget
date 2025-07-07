@@ -25,9 +25,18 @@
     <div class="buttons">
       <button id="start">Start</button>
       <button id="reset">Reset</button>
-      <button id="settings" style="font-size: 10px; padding: 6px 10px;">⚙️</button>
+      <button id="settings" style="font-size: 10px; ">⚙️</button>
     </div>
-
+<div class="settings-panel hidden" id="settingsPanel">
+  <label>
+    Color 1:
+    <input type="color" id="color1" value="#ffffff" />
+  </label>
+  <label>
+    Color 2:
+    <input type="color" id="color2" value="#000000" />
+  </label>
+</div>
     <audio id="alarmSound" src="https://www.soundjay.com/buttons/sounds/beep-07.mp3" preload="auto"></audio>
   </div>
 

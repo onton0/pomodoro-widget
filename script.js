@@ -79,5 +79,21 @@ setCustom.addEventListener("click", () => {
 
 startBtn.addEventListener("click", startTimer);
 resetBtn.addEventListener("click", resetTimer);
+const settingsBtn = document.getElementById("settings");
+const settingsPanel = document.getElementById("settingsPanel");
+const color1Input = document.getElementById("color1");
+const color2Input = document.getElementById("color2");
+
+settingsBtn.addEventListener("click", () => {
+  settingsPanel.classList.toggle("hidden");
+});
+
+function applyColors() {
+  document.body.style.backgroundColor = color1Input.value;
+  document.querySelector(".container").style.backgroundColor = color2Input.value;
+}
+
+color1Input.addEventListener("input", applyColors);
+color2Input.addEventListener("input", applyColors);
 
 updateDisplay();

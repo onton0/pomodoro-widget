@@ -20,22 +20,23 @@ body {
 .tabs {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
   margin-bottom: 20px;
-  gap: 5px;
 }
-
 .tab {
-  flex: 1;
-  padding: 8px 12px;
-  font-size: 14px;
+  padding: 6px 16px;
+  font-size: 13px;
   border: 1px solid black;
-  border-radius: 9999px; /* capsule shape */
+  border-radius: 9999px;
   background: transparent;
   color: black;
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;      /* keeps words in one line */
+  text-align: center;
+  line-height: 1.2;
 }
-
 .tab.active {
   background: black;
   color: white;
@@ -82,4 +83,24 @@ button:hover {
 
 .hidden {
   display: none;
+}
+.settings-panel {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  background: #f1f1f1;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.settings-panel input[type="color"] {
+  margin-left: 8px;
+  width: 40px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
