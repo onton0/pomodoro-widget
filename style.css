@@ -26,17 +26,24 @@ body {
 
 .tab {
   flex: 1;
-  padding: 8px;
+  padding: 8px 12px;
   font-size: 14px;
-  background: #eee;
-  border: none;
-  border-radius: 8px;
+  border: 1px solid black;
+  border-radius: 9999px; /* capsule shape */
+  background: transparent;
+  color: black;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .tab.active {
   background: black;
   color: white;
+  font-weight: bold;
+
+}
+.tab:hover {
+  background: #ddd;
 }
 
 .timer {
