@@ -85,19 +85,43 @@ const color1Input = document.getElementById("color1");
 const color2Input = document.getElementById("color2");
 
 settingsBtn.addEventListener("click", () => {
-  // Toggle settings panel visibility
   settingsPanel.classList.toggle("hidden");
-
-  // Apply the current selected colors
-  applyColors();
+  // Optional: close when open elsewhere
 });
 
 function applyColors() {
-  document.body.style.backgroundColor = color1Input.value;
-  document.querySelector(".container").style.backgroundColor = color2Input.value;
+  const textColor = color1Input.value;
+  const bgColor = color2Input.value;
+
+  document.querySelector(".container").style.backgroundColor = bgColor;
+  document.querySelector(".container").style.color = textColor;
+
+  const buttons = document.querySelectorAll("button");
+  buttons.forEach(btn => {
+    btn.style.backgroundColor = textColor;
+    btn.style.color = bgColor;
+    btn.style.border = `1px solid ${textColor}`;
+  });
+
+  const tabs = document.querySelectorAll(".tab");
+  tabs.forEach(tab => {
+    if (!tab.classList.contains("active")) {
+      tab.style.color = textColor;
+      tab.style.border = `1px solid ${textColor}`;
+      tab.style.background = 'transparent';
+    }
+  });
+
+  const activeTab = document.querySelector(".tab.active");
+  if (activeTab) {
+    activeTab.style.backgroundColor = textColor;
+    activeTab.style.color = bgColor;
+  }
+
+  // Timer text color
+  document.getElementById("timer").style.color = textColor;
 }
 
-// Update live as user picks
 color1Input.addEventListener("input", applyColors);
 color2Input.addEventListener("input", applyColors);
 

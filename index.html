@@ -28,16 +28,15 @@
       <button id="settings" style="font-size: 10px; ">⚙️</button>
     </div>
 <div class="settings-panel hidden" id="settingsPanel">
-  <label>
-    Color 1:
-    <input type="color" id="color1" value="#ffffff" />
-  </label>
-  <label>
-    Color 2:
-    <input type="color" id="color2" value="#000000" />
-  </label>
+  <div class="color-row">
+    <label for="color1">Text Color:</label>
+    <input type="color" id="color1" value="#000000" />
+  </div>
+  <div class="color-row">
+    <label for="color2">Background:</label>
+    <input type="color" id="color2" value="#ffffff" />
+  </div>
 </div>
-
     <audio id="alarmSound" src="https://www.soundjay.com/buttons/sounds/beep-07.mp3" preload="auto"></audio>
   </div>
 
