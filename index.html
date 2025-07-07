@@ -2,18 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pomodoro Widget</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pomofocus Timer</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="widget">
+  <div class="container">
+    <div class="tabs">
+      <button class="tab active" data-time="1500">Pomodoro</button>
+      <button class="tab" data-time="300">Short Break</button>
+      <button class="tab" data-time="900">Long Break</button>
+      <button class="tab custom">Custom</button>
+    </div>
+
     <div class="timer" id="timer">25:00</div>
+
+    <div class="custom-input hidden" id="customInput">
+      <input type="number" id="customMinutes" placeholder="Minutes" min="1" max="999"/>
+      <button id="setCustom">Set</button>
+    </div>
+
     <div class="buttons">
       <button id="start">Start</button>
       <button id="reset">Reset</button>
     </div>
+
+    <audio id="alarmSound" src="https://www.soundjay.com/buttons/sounds/beep-07.mp3" preload="auto"></audio>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
