@@ -100,3 +100,36 @@ button:hover {
 .dot.active {
   background-color: #000;
 }
+
+.settings-panel {
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  align-items: flex-start;
+}
+.settings-panel label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.settings-panel input[type="text"] {
+  width: 100px;
+  padding: 4px;
+  font-size: 14px;
+}
+.settings-btn {
+  font-size: 18px;
+  background: transparent;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+}
+.hidden {
+  display: none;
+}

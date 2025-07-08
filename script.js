@@ -105,3 +105,57 @@ editableTimer.addEventListener("keydown", (e) => {
 
 timers.forEach((_, i) => updateTimerDisplay(i));
 updateSlide();
+
+// SETTINGS: Color pickers logic
+document.querySelectorAll(".settings-btn").forEach((btn, index) => {
+  btn.addEventListener("click", () => {
+    const panel = btn.parentElement.nextElementSibling;
+    panel.classList.toggle("hidden");
+
+    const colorText = panel.querySelector("#colorText");
+    const colorBg = panel.querySelector("#colorBg");
+    const hexText = panel.querySelector("#hexText");
+    const hexBg = panel.querySelector("#hexBg");
+
+    const slide = btn.closest(".slide");
+    colorText.value = rgbToHex(getComputedStyle(slide).color);
+    colorBg.value = rgbToHex(getComputedStyle(slide).backgroundColor);
+    hexText.value = colorText.value;
+    hexBg.value = colorBg.value;
+
+    colorText.addEventListener("input", () => {
+      slide.style.color = colorText.value;
+      hexText.value = colorText.value;
+    });
+
+    colorBg.addEventListener("input", () => {
+      slide.style.backgroundColor = colorBg.value;
+      hexBg.value = colorBg.value;
+    });
+
+    hexText.addEventListener("change", () => {
+      if (/^#([0-9A-F]{3}){1,2}$/i.test(hexText.value)) {
+        slide.style.color = hexText.value;
+        colorText.value = hexText.value;
+      }
+    });
+
+    hexBg.addEventListener("change", () => {
+      if (/^#([0-9A-F]{3}){1,2}$/i.test(hexBg.value)) {
+        slide.style.backgroundColor = hexBg.value;
+        colorBg.value = hexBg.value;
+      }
+    });
+  });
+});
+
+function rgbToHex(rgb) {
+  const result = rgb.match(/\d+/g);
+  if (!result || result.length < 3) return "#000000";
+  return (
+    "#" +
+    result.slice(0, 3)
+      .map(x => parseInt(x).toString(16).padStart(2, "0"))
+      .join("")
+  );
+}
