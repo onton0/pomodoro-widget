@@ -9,7 +9,6 @@
 <body>
   <div class="slider-container">
     <div class="slides">
-      <!-- Pomodoro -->
       <div class="slide" data-time="1500">
         <h2>Pomodoro</h2>
         <div class="timer" id="timer0">25:00</div>
@@ -18,8 +17,6 @@
           <button class="reset" data-index="0">Reset</button>
         </div>
       </div>
-
-      <!-- Short Break -->
       <div class="slide" data-time="300">
         <h2>Short Break</h2>
         <div class="timer" id="timer1">05:00</div>
@@ -28,8 +25,6 @@
           <button class="reset" data-index="1">Reset</button>
         </div>
       </div>
-
-      <!-- Long Break -->
       <div class="slide" data-time="900">
         <h2>Long Break</h2>
         <div class="timer" id="timer2">15:00</div>
@@ -38,24 +33,17 @@
           <button class="reset" data-index="2">Reset</button>
         </div>
       </div>
-
- <!-- Custom -->
-<div class="slide">
-  <h2>Custom</h2>
-  <div class="timer editable" id="timer3" contenteditable="true">00:00</div>
-  <div class="buttons">
-    <button class="start" data-index="3">Start</button>
-    <button class="reset" data-index="3">Reset</button>
-  </div>
-</div>
-
-
-
-    <!-- Navigation Arrows -->
+      <div class="slide">
+        <h2>Custom</h2>
+        <div class="timer editable" id="timer3" contenteditable="true">00:00</div>
+        <div class="buttons">
+          <button class="start" data-index="3">Start</button>
+          <button class="reset" data-index="3">Reset</button>
+        </div>
+      </div>
+    </div>
     <button class="nav left">&#10094;</button>
     <button class="nav right">&#10095;</button>
-
-    <!-- Dot Indicators -->
     <div class="dots">
       <span class="dot active"></span>
       <span class="dot"></span>
@@ -63,7 +51,6 @@
       <span class="dot"></span>
     </div>
   </div>
-
   <audio id="alarmSound" src="https://www.soundjay.com/buttons/sounds/beep-07.mp3" preload="auto"></audio>
   <script src="script.js"></script>
 </body>

@@ -7,54 +7,56 @@ body {
   height: 100vh;
   background: #f7f7f7;
 }
-
 .slider-container {
-  width: 320px;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   position: relative;
   background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
-
 .slides {
   display: flex;
-  width: 400%; /* 4 slides */
   transition: transform 0.4s ease-in-out;
+  width: 400vw;
 }
-
 .slide {
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   flex-shrink: 0;
-  padding: 20px;
   box-sizing: border-box;
-  text-align: center;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
-
 h2 {
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
-
 .timer {
-  font-size: 36px;
+  font-size: 80px;
   font-weight: bold;
   margin: 20px 0;
 }
-
+.timer.editable {
+  outline: none;
+  border: 2px dashed transparent;
+  transition: border 0.2s;
+  cursor: text;
+}
+.timer.editable:focus {
+  border: 2px dashed #aaa;
+}
 .buttons {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 12px;
+  margin-top: 20px;
 }
-
 button {
-  font-size: 14px;
-  padding: 8px 14px;
+  font-size: 18px;
+  padding: 14px 24px;
   border: none;
   border-radius: 9999px;
   background: black;
@@ -65,19 +67,6 @@ button {
 button:hover {
   background: #333;
 }
-
-.custom-input {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 20px;
-}
-.custom-input input {
-  width: 80px;
-  padding: 5px;
-  font-size: 14px;
-}
-
 .nav {
   position: absolute;
   top: 50%;
@@ -94,7 +83,6 @@ button:hover {
 .nav.right {
   right: 10px;
 }
-
 .dots {
   display: flex;
   justify-content: center;
@@ -111,14 +99,4 @@ button:hover {
 }
 .dot.active {
   background-color: #000;
-}
-.timer.editable {
-  outline: none;
-  border: 2px dashed transparent;
-  transition: border 0.2s;
-  cursor: text;
-}
-
-.timer.editable:focus {
-  border: 2px dashed #aaa;
 }

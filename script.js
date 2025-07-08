@@ -5,24 +5,23 @@ const rightBtn = document.querySelector('.nav.right');
 const alarm = document.getElementById('alarmSound');
 
 let currentIndex = 0;
-let timers = [1500, 300, 900, 0]; // Pomodoro, Short, Long, Custom
+let timers = [1500, 300, 900, 0];
 let intervalIDs = [null, null, null, null];
 let isRunning = [false, false, false, false];
 
 function formatTime(seconds) {
   const mins = String(Math.floor(seconds / 60)).padStart(2, "0");
   const secs = String(seconds % 60).padStart(2, "0");
-  return `${mins}:${secs}`;
+  return \`\${mins}:\${secs}\`;
 }
 
 function updateTimerDisplay(index) {
-  const timerEl = document.getElementById(`timer${index}`);
+  const timerEl = document.getElementById(\`timer\${index}\`);
   if (timerEl) timerEl.textContent = formatTime(timers[index]);
 }
 
 function startTimer(index) {
   if (isRunning[index]) return;
-
   isRunning[index] = true;
   intervalIDs[index] = setInterval(() => {
     if (timers[index] > 0) {
@@ -39,21 +38,14 @@ function startTimer(index) {
 function resetTimer(index) {
   clearInterval(intervalIDs[index]);
   isRunning[index] = false;
-
   const slide = document.querySelectorAll('.slide')[index];
   const defaultTime = slide.getAttribute('data-time');
-
   if (defaultTime) {
     timers[index] = parseInt(defaultTime);
-  } else if (index === 3) {
-    // If custom timer, keep current value (do not reset to 0)
-    // OR you can decide to reset to 0 with: timers[3] = 0;
   }
-
   updateTimerDisplay(index);
 }
 
-// Attach event listeners for Start/Reset buttons
 document.querySelectorAll('.start').forEach(btn => {
   btn.addEventListener('click', () => {
     const i = parseInt(btn.dataset.index);
@@ -68,9 +60,8 @@ document.querySelectorAll('.reset').forEach(btn => {
   });
 });
 
-// Slide navigation
 function updateSlide() {
-  slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+  slides.style.transform = \`translateX(-\${currentIndex * 100}%)\`;
   dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
 }
 
@@ -84,15 +75,13 @@ rightBtn.addEventListener('click', () => {
   updateSlide();
 });
 
-// Editable Custom Timer (timer3)
+// Editable custom timer
 const editableTimer = document.getElementById("timer3");
-
 editableTimer.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
     const input = editableTimer.textContent.trim();
     const parts = input.split(":");
-
     let totalSeconds = 0;
     if (parts.length === 1) {
       const mins = parseInt(parts[0]);
@@ -104,7 +93,6 @@ editableTimer.addEventListener("keydown", (e) => {
         totalSeconds = mins * 60 + secs;
       }
     }
-
     if (totalSeconds > 0) {
       timers[3] = totalSeconds;
       updateTimerDisplay(3);
@@ -115,6 +103,5 @@ editableTimer.addEventListener("keydown", (e) => {
   }
 });
 
-// Initialize display
 timers.forEach((_, i) => updateTimerDisplay(i));
 updateSlide();
