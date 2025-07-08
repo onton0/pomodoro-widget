@@ -112,3 +112,13 @@ button:hover {
 .dot.active {
   background-color: #000;
 }
+.timer.editable {
+  outline: none;
+  border: 2px dashed transparent;
+  transition: border 0.2s;
+}
+
+.timer.editable:focus {
+  border: 2px dashed #aaa;
+}
+	

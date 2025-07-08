@@ -89,6 +89,39 @@ rightBtn.addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % 4;
   updateSlide();
 });
+// Allow editing timer3 directly (Custom Timer)
+const editableTimer = document.getElementById("timer3");
+
+editableTimer.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    const input = editableTimer.textContent.trim();
+    const parts = input.split(":");
+
+    let totalSeconds = 0;
+    if (parts.length === 1) {
+      // e.g. user types "10"
+      const mins = parseInt(parts[0]);
+      if (!isNaN(mins)) totalSeconds = mins * 60;
+    } else if (parts.length === 2) {
+      // e.g. user types "10:30"
+      const mins = parseInt(parts[0]);
+      const secs = parseInt(parts[1]);
+      if (!isNaN(mins) && !isNaN(secs)) {
+        totalSeconds = mins * 60 + secs;
+      }
+    }
+
+    if (totalSeconds > 0) {
+      timers[3] = totalSeconds;
+      updateTimerDisplay(3); // format and show it correctly
+      editableTimer.blur(); // remove focus
+    } else {
+      // If input is invalid, restore previous time
+      editableTimer.textContent = formatTime(timers[3]);
+    }
+  }
+});
 
 // Initialize
 timers.forEach((_, i) => updateTimerDisplay(i));
