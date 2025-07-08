@@ -116,9 +116,9 @@ button:hover {
   outline: none;
   border: 2px dashed transparent;
   transition: border 0.2s;
+  cursor: text;
 }
 
 .timer.editable:focus {
   border: 2px dashed #aaa;
 }
-	

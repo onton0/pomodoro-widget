@@ -67,13 +67,6 @@ document.querySelectorAll('.reset').forEach(btn => {
   });
 });
 
-document.getElementById('setCustom').addEventListener('click', () => {
-  const minutes = parseInt(document.getElementById("customMinutes").value);
-  if (!isNaN(minutes) && minutes > 0) {
-    timers[3] = minutes * 60;
-    updateTimerDisplay(3);
-  }
-});
 
 function updateSlide() {
   slides.style.transform = `translateX(-${currentIndex * 100}%)`;
