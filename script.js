@@ -3,15 +3,11 @@ const dots = document.querySelectorAll('.dot');
 const leftBtn = document.querySelector('.nav.left');
 const rightBtn = document.querySelector('.nav.right');
 const alarm = document.getElementById('alarmSound');
+
 let currentIndex = 0;
-let timers = [1500, 300, 900, 0]; // Default times in seconds
+let timers = [1500, 300, 900, 0]; // Seconds for Pomodoro, Short Break, Long Break, Custom
 let intervalIDs = [null, null, null, null];
 let isRunning = [false, false, false, false];
-
-function updateSlide() {
-  slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-  dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
-}
 
 function formatTime(seconds) {
   const mins = String(Math.floor(seconds / 60)).padStart(2, "0");
@@ -21,7 +17,7 @@ function formatTime(seconds) {
 
 function updateTimerDisplay(index) {
   const timer = document.getElementById(`timer${index}`);
-  timer.textContent = formatTime(timers[index]);
+  if (timer) timer.textContent = formatTime(timers[index]);
 }
 
 function startTimer(index) {
@@ -46,7 +42,7 @@ function resetTimer(index) {
 
   const slide = document.querySelectorAll('.slide')[index];
   const time = slide.getAttribute('data-time');
-  timers[index] = time ? parseInt(time) : 0;
+  timers[index] = time ? parseInt(time) : timers[index];
   updateTimerDisplay(index);
 }
 
@@ -72,6 +68,11 @@ document.getElementById('setCustom').addEventListener('click', () => {
   }
 });
 
+function updateSlide() {
+  slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+  dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+}
+
 leftBtn.addEventListener('click', () => {
   currentIndex = (currentIndex - 1 + 4) % 4;
   updateSlide();
@@ -82,6 +83,6 @@ rightBtn.addEventListener('click', () => {
   updateSlide();
 });
 
-// Initialize timers
+// Initial setup
 timers.forEach((_, i) => updateTimerDisplay(i));
 updateSlide();

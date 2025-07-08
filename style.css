@@ -9,9 +9,9 @@ body {
 }
 
 .slider-container {
-  position: relative;
   width: 320px;
   overflow: hidden;
+  position: relative;
   background: #fff;
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -19,15 +19,19 @@ body {
 
 .slides {
   display: flex;
-  width: 400%;
   transition: transform 0.4s ease-in-out;
+  width: 400%; /* 4 slides */
 }
 
 .slide {
   width: 100%;
   flex-shrink: 0;
   padding: 20px;
+  box-sizing: border-box;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 h2 {
@@ -45,6 +49,7 @@ h2 {
   display: flex;
   justify-content: center;
   gap: 10px;
+  margin-top: 10px;
 }
 
 button {
