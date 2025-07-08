@@ -1,129 +1,87 @@
-let timer;
-let timeLeft = 1500;
-let isRunning = false;
-let isPaused = false;
+const slides = document.querySelector('.slides');
+const dots = document.querySelectorAll('.dot');
+const leftBtn = document.querySelector('.nav.left');
+const rightBtn = document.querySelector('.nav.right');
+const alarm = document.getElementById('alarmSound');
+let currentIndex = 0;
+let timers = [1500, 300, 900, 0]; // Default times in seconds
+let intervalIDs = [null, null, null, null];
+let isRunning = [false, false, false, false];
 
-const timerDisplay = document.getElementById("timer");
-const startBtn = document.getElementById("start");
-const resetBtn = document.getElementById("reset");
-const tabs = document.querySelectorAll(".tab");
-const customInput = document.getElementById("customInput");
-const customMinutes = document.getElementById("customMinutes");
-const setCustom = document.getElementById("setCustom");
-const alarm = document.getElementById("alarmSound");
-
-function updateDisplay() {
-  const minutes = Math.floor(timeLeft / 60);
-  const seconds = timeLeft % 60;
-  timerDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+function updateSlide() {
+  slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+  dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
 }
 
-function startTimer() {
-  if (!isRunning) {
-    isRunning = true;
-    isPaused = false;
-    startBtn.textContent = "Pause";
-    timer = setInterval(() => {
-      if (!isPaused) {
-        timeLeft--;
-        updateDisplay();
-        if (timeLeft <= 0) {
-          clearInterval(timer);
-          isRunning = false;
-          startBtn.textContent = "Start";
-          alarm.play();
-        }
-      }
-    }, 1000);
-  } else {
-    // Pause the timer
-    isPaused = !isPaused;
-    startBtn.textContent = isPaused ? "Start" : "Pause";
-  }
+function formatTime(seconds) {
+  const mins = String(Math.floor(seconds / 60)).padStart(2, "0");
+  const secs = String(seconds % 60).padStart(2, "0");
+  return `${mins}:${secs}`;
 }
 
-function resetTimer() {
-  clearInterval(timer);
-  isRunning = false;
-  isPaused = false;
-  startBtn.textContent = "Start";
-
-  const activeTab = document.querySelector(".tab.active");
-  timeLeft = parseInt(activeTab.dataset.time) || (parseInt(customMinutes.value) * 60) || 1500;
-  updateDisplay();
+function updateTimerDisplay(index) {
+  const timer = document.getElementById(`timer${index}`);
+  timer.textContent = formatTime(timers[index]);
 }
 
-tabs.forEach(tab => {
-  tab.addEventListener("click", () => {
-    tabs.forEach(t => t.classList.remove("active"));
-    tab.classList.add("active");
+function startTimer(index) {
+  if (isRunning[index]) return;
 
-    if (tab.classList.contains("custom")) {
-      customInput.classList.remove("hidden");
+  isRunning[index] = true;
+  intervalIDs[index] = setInterval(() => {
+    if (timers[index] > 0) {
+      timers[index]--;
+      updateTimerDisplay(index);
     } else {
-      customInput.classList.add("hidden");
-      timeLeft = parseInt(tab.dataset.time);
+      clearInterval(intervalIDs[index]);
+      isRunning[index] = false;
+      alarm.play();
     }
-
-    resetTimer();
-  });
-});
-
-setCustom.addEventListener("click", () => {
-  const minutes = parseInt(customMinutes.value);
-  if (!isNaN(minutes) && minutes > 0) {
-    timeLeft = minutes * 60;
-    resetTimer();
-  }
-});
-
-startBtn.addEventListener("click", startTimer);
-resetBtn.addEventListener("click", resetTimer);
-const settingsBtn = document.getElementById("settings");
-const settingsPanel = document.getElementById("settingsPanel");
-const color1Input = document.getElementById("color1");
-const color2Input = document.getElementById("color2");
-
-settingsBtn.addEventListener("click", () => {
-  settingsPanel.classList.toggle("hidden");
-  // Optional: close when open elsewhere
-});
-
-function applyColors() {
-  const textColor = color1Input.value;
-  const bgColor = color2Input.value;
-
-  document.querySelector(".container").style.backgroundColor = bgColor;
-  document.querySelector(".container").style.color = textColor;
-
-  const buttons = document.querySelectorAll("button");
-  buttons.forEach(btn => {
-    btn.style.backgroundColor = textColor;
-    btn.style.color = bgColor;
-    btn.style.border = `1px solid ${textColor}`;
-  });
-
-  const tabs = document.querySelectorAll(".tab");
-  tabs.forEach(tab => {
-    if (!tab.classList.contains("active")) {
-      tab.style.color = textColor;
-      tab.style.border = `1px solid ${textColor}`;
-      tab.style.background = 'transparent';
-    }
-  });
-
-  const activeTab = document.querySelector(".tab.active");
-  if (activeTab) {
-    activeTab.style.backgroundColor = textColor;
-    activeTab.style.color = bgColor;
-  }
-
-  // Timer text color
-  document.getElementById("timer").style.color = textColor;
+  }, 1000);
 }
 
-color1Input.addEventListener("input", applyColors);
-color2Input.addEventListener("input", applyColors);
+function resetTimer(index) {
+  clearInterval(intervalIDs[index]);
+  isRunning[index] = false;
 
+  const slide = document.querySelectorAll('.slide')[index];
+  const time = slide.getAttribute('data-time');
+  timers[index] = time ? parseInt(time) : 0;
+  updateTimerDisplay(index);
+}
 
-updateDisplay();
+document.querySelectorAll('.start').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const i = parseInt(btn.dataset.index);
+    startTimer(i);
+  });
+});
+
+document.querySelectorAll('.reset').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const i = parseInt(btn.dataset.index);
+    resetTimer(i);
+  });
+});
+
+document.getElementById('setCustom').addEventListener('click', () => {
+  const minutes = parseInt(document.getElementById('customMinutes').value);
+  if (!isNaN(minutes) && minutes > 0) {
+    timers[3] = minutes * 60;
+    updateTimerDisplay(3);
+  }
+});
+
+leftBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + 4) % 4;
+  updateSlide();
+});
+
+rightBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % 4;
+  updateSlide();
+});
+
+// Initialize timers
+timers.forEach((_, i) => updateTimerDisplay(i));
+updateSlide();

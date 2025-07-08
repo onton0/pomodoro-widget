@@ -7,38 +7,58 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="tabs">
-      <button class="tab active" data-time="1500">Pomodoro</button>
-      <button class="tab" data-time="300">Short Break</button>
-      <button class="tab" data-time="900">Long Break</button>
-      <button class="tab custom">Custom</button>
+  <div class="slider-container">
+    <div class="slides">
+      <div class="slide" data-time="1500">
+        <h2>Pomodoro</h2>
+        <div class="timer" id="timer0">25:00</div>
+        <div class="buttons">
+          <button class="start" data-index="0">Start</button>
+          <button class="reset" data-index="0">Reset</button>
+        </div>
+      </div>
+      <div class="slide" data-time="300">
+        <h2>Short Break</h2>
+        <div class="timer" id="timer1">05:00</div>
+        <div class="buttons">
+          <button class="start" data-index="1">Start</button>
+          <button class="reset" data-index="1">Reset</button>
+        </div>
+      </div>
+      <div class="slide" data-time="900">
+        <h2>Long Break</h2>
+        <div class="timer" id="timer2">15:00</div>
+        <div class="buttons">
+          <button class="start" data-index="2">Start</button>
+          <button class="reset" data-index="2">Reset</button>
+        </div>
+      </div>
+      <div class="slide">
+        <h2>Custom</h2>
+        <div class="custom-input">
+          <input type="number" placeholder="Minutes" id="customMinutes" />
+          <button id="setCustom">Set</button>
+        </div>
+        <div class="timer" id="timer3">00:00</div>
+        <div class="buttons">
+          <button class="start" data-index="3">Start</button>
+          <button class="reset" data-index="3">Reset</button>
+        </div>
+      </div>
     </div>
 
-    <div class="timer" id="timer">25:00</div>
+    <button class="nav left">&#10094;</button>
+    <button class="nav right">&#10095;</button>
 
-    <div class="custom-input hidden" id="customInput">
-      <input type="number" id="customMinutes" placeholder="Minutes" min="1" max="999"/>
-      <button id="setCustom">Set</button>
+    <div class="dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
     </div>
+  </div>
 
-    <div class="buttons">
-      <button id="start">Start</button>
-      <button id="reset">Reset</button>
-      <button id="settings" style="font-size: 10px; ">⚙️</button>
-    </div>
-<div class="settings-panel hidden" id="settingsPanel">
-  <div class="color-row">
-    <label for="color1">Text Color:</label>
-    <input type="color" id="color1" value="#000000" />
-  </div>
-  <div class="color-row">
-    <label for="color2">Background:</label>
-    <input type="color" id="color2" value="#ffffff" />
-  </div>
-</div>
-    <audio id="alarmSound" src="https://www.soundjay.com/buttons/sounds/beep-07.mp3" preload="auto"></audio>
-  </div>
+  <audio id="alarmSound" src="https://www.soundjay.com/buttons/sounds/beep-07.mp3" preload="auto"></audio>
 
   <script src="script.js"></script>
 </body>
