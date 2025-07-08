@@ -5,7 +5,7 @@ const rightBtn = document.querySelector('.nav.right');
 const alarm = document.getElementById('alarmSound');
 
 let currentIndex = 0;
-let timers = [1500, 300, 900, 0]; // Seconds for Pomodoro, Short Break, Long Break, Custom
+let timers = [1500, 300, 900, 0]; // Pomodoro, Short, Long, Custom
 let intervalIDs = [null, null, null, null];
 let isRunning = [false, false, false, false];
 
@@ -16,8 +16,8 @@ function formatTime(seconds) {
 }
 
 function updateTimerDisplay(index) {
-  const timer = document.getElementById(`timer${index}`);
-  if (timer) timer.textContent = formatTime(timers[index]);
+  const timerEl = document.getElementById(`timer${index}`);
+  if (timerEl) timerEl.textContent = formatTime(timers[index]);
 }
 
 function startTimer(index) {
@@ -41,8 +41,16 @@ function resetTimer(index) {
   isRunning[index] = false;
 
   const slide = document.querySelectorAll('.slide')[index];
-  const time = slide.getAttribute('data-time');
-  timers[index] = time ? parseInt(time) : timers[index];
+  const defaultTime = slide.getAttribute('data-time');
+  if (defaultTime) {
+    timers[index] = parseInt(defaultTime);
+  } else if (index === 3) {
+    // Keep custom time if set, otherwise 0
+    const customInput = document.getElementById("customMinutes");
+    if (customInput.value) {
+      timers[3] = parseInt(customInput.value) * 60;
+    }
+  }
   updateTimerDisplay(index);
 }
 
@@ -60,8 +68,10 @@ document.querySelectorAll('.reset').forEach(btn => {
   });
 });
 
+// Custom Set Button
 document.getElementById('setCustom').addEventListener('click', () => {
-  const minutes = parseInt(document.getElementById('customMinutes').value);
+  const customInput = document.getElementById("customMinutes");
+  const minutes = parseInt(customInput.value);
   if (!isNaN(minutes) && minutes > 0) {
     timers[3] = minutes * 60;
     updateTimerDisplay(3);
@@ -83,6 +93,6 @@ rightBtn.addEventListener('click', () => {
   updateSlide();
 });
 
-// Initial setup
+// Initialize all timers
 timers.forEach((_, i) => updateTimerDisplay(i));
 updateSlide();
