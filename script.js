@@ -45,10 +45,9 @@ function resetTimer(index) {
   if (defaultTime) {
     timers[index] = parseInt(defaultTime);
   } else if (index === 3) {
-    // Keep custom time if set, otherwise 0
-    const customInput = document.getElementById("customMinutes");
-    if (customInput.value) {
-      timers[3] = parseInt(customInput.value) * 60;
+    const input = document.getElementById("customMinutes");
+    if (input.value) {
+      timers[3] = parseInt(input.value) * 60;
     }
   }
   updateTimerDisplay(index);
@@ -68,10 +67,8 @@ document.querySelectorAll('.reset').forEach(btn => {
   });
 });
 
-// Custom Set Button
 document.getElementById('setCustom').addEventListener('click', () => {
-  const customInput = document.getElementById("customMinutes");
-  const minutes = parseInt(customInput.value);
+  const minutes = parseInt(document.getElementById("customMinutes").value);
   if (!isNaN(minutes) && minutes > 0) {
     timers[3] = minutes * 60;
     updateTimerDisplay(3);
@@ -93,6 +90,6 @@ rightBtn.addEventListener('click', () => {
   updateSlide();
 });
 
-// Initialize all timers
+// Initialize
 timers.forEach((_, i) => updateTimerDisplay(i));
 updateSlide();

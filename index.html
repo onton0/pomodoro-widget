@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sliding Timer</title>
+  <title>Sliding Pomodoro Timer</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -39,19 +39,20 @@
         </div>
       </div>
 
-     <!-- Custom -->
-<div class="slide">
-  <h2>Custom</h2>
-  <div class="custom-input">
-    <input type="number" id="customMinutes" placeholder="Minutes" min="1" max="999" />
-    <button id="setCustom">Set</button>
-  </div>
-  <div class="timer" id="timer3">00:00</div>
-  <div class="buttons">
-    <button class="start" data-index="3">Start</button>
-    <button class="reset" data-index="3">Reset</button>
-  </div>
-</div>
+      <!-- Custom -->
+      <div class="slide">
+        <h2>Custom</h2>
+        <div class="custom-input">
+          <input type="number" placeholder="Minutes" id="customMinutes" min="1" max="999" />
+          <button id="setCustom">Set</button>
+        </div>
+        <div class="timer" id="timer3">00:00</div>
+        <div class="buttons">
+          <button class="start" data-index="3">Start</button>
+          <button class="reset" data-index="3">Reset</button>
+        </div>
+      </div>
+    </div>
 
     <!-- Navigation Arrows -->
     <button class="nav left">&#10094;</button>
@@ -66,9 +67,7 @@
     </div>
   </div>
 
-  <!-- Alarm -->
   <audio id="alarmSound" src="https://www.soundjay.com/buttons/sounds/beep-07.mp3" preload="auto"></audio>
-
   <script src="script.js"></script>
 </body>
 </html>
