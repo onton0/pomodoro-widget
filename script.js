@@ -42,17 +42,18 @@ function resetTimer(index) {
 
   const slide = document.querySelectorAll('.slide')[index];
   const defaultTime = slide.getAttribute('data-time');
+
   if (defaultTime) {
     timers[index] = parseInt(defaultTime);
   } else if (index === 3) {
-    const input = document.getElementById("customMinutes");
-    if (input.value) {
-      timers[3] = parseInt(input.value) * 60;
-    }
+    // If custom timer, keep current value (do not reset to 0)
+    // OR you can decide to reset to 0 with: timers[3] = 0;
   }
+
   updateTimerDisplay(index);
 }
 
+// Attach event listeners for Start/Reset buttons
 document.querySelectorAll('.start').forEach(btn => {
   btn.addEventListener('click', () => {
     const i = parseInt(btn.dataset.index);
@@ -67,7 +68,7 @@ document.querySelectorAll('.reset').forEach(btn => {
   });
 });
 
-
+// Slide navigation
 function updateSlide() {
   slides.style.transform = `translateX(-${currentIndex * 100}%)`;
   dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
@@ -82,7 +83,8 @@ rightBtn.addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % 4;
   updateSlide();
 });
-// Allow editing timer3 directly (Custom Timer)
+
+// Editable Custom Timer (timer3)
 const editableTimer = document.getElementById("timer3");
 
 editableTimer.addEventListener("keydown", (e) => {
@@ -93,11 +95,9 @@ editableTimer.addEventListener("keydown", (e) => {
 
     let totalSeconds = 0;
     if (parts.length === 1) {
-      // e.g. user types "10"
       const mins = parseInt(parts[0]);
       if (!isNaN(mins)) totalSeconds = mins * 60;
     } else if (parts.length === 2) {
-      // e.g. user types "10:30"
       const mins = parseInt(parts[0]);
       const secs = parseInt(parts[1]);
       if (!isNaN(mins) && !isNaN(secs)) {
@@ -107,15 +107,14 @@ editableTimer.addEventListener("keydown", (e) => {
 
     if (totalSeconds > 0) {
       timers[3] = totalSeconds;
-      updateTimerDisplay(3); // format and show it correctly
-      editableTimer.blur(); // remove focus
+      updateTimerDisplay(3);
+      editableTimer.blur();
     } else {
-      // If input is invalid, restore previous time
       editableTimer.textContent = formatTime(timers[3]);
     }
   }
 });
 
-// Initialize
+// Initialize display
 timers.forEach((_, i) => updateTimerDisplay(i));
 updateSlide();
