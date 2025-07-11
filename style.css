@@ -7,14 +7,8 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
-  font-family: sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: #f7f7f7;
 }
+
 .slider-container {
   width: 90%;
   max-width: 480px;
@@ -24,63 +18,49 @@ body {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-  background: #fff;
 }
+
 .slides {
   display: flex;
   width: 400%;
   height: 100%;
   transition: transform 0.4s ease-in-out;
-  display: flex;
-  transition: transform 0.4s ease-in-out;
-  width: 400vw;
 }
+
 .slide {
   width: 100%;
   height: 100%;
+  flex-shrink: 0;
   padding: 20px;
-  flex-shrink: 0;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
-  flex-shrink: 0;
-  padding: 40px;
-  box-sizing: border-box;
-  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .timer {
   font-size: 80px;
   font-weight: bold;
   margin: 20px 0;
 }
+
 .timer.editable {
   outline: none;
   border: 2px dashed transparent;
   transition: border 0.2s;
 }
+
 .timer.editable:focus {
   border: 2px dashed #aaa;
 }
+
 .buttons {
   display: flex;
   gap: 10px;
   margin-top: 10px;
 }
+
 button {
   font-size: 16px;
   padding: 10px 20px;
@@ -90,29 +70,36 @@ button {
   color: white;
   cursor: pointer;
 }
+
 button:hover {
   background: #333;
 }
+
 .nav {
   position: absolute;
   top: 50%;
+  transform: translateY(-50%);
   font-size: 30px;
   background: transparent;
   border: none;
   cursor: pointer;
   color: #999;
 }
+
 .nav.left {
   left: 10px;
 }
+
 .nav.right {
   right: 10px;
 }
+
 .dots {
   display: flex;
   justify-content: center;
   margin: 10px 0;
 }
+
 .dot {
   height: 8px;
   width: 8px;
@@ -121,9 +108,11 @@ button:hover {
   border-radius: 50%;
   display: inline-block;
 }
+
 .dot.active {
   background-color: #000;
 }
+
 .settings-panel {
   background: #eee;
   border: 1px solid #ccc;
@@ -136,15 +125,18 @@ button:hover {
   font-size: 14px;
   align-items: flex-start;
 }
+
 .settings-panel label {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
+
 .settings-panel input[type="text"] {
   width: 100px;
   padding: 4px;
 }
+
 .settings-btn {
   font-size: 18px;
   background: transparent;
@@ -152,6 +144,7 @@ button:hover {
   border: none;
   cursor: pointer;
 }
+
 .hidden {
   display: none;
 }
