@@ -10,16 +10,16 @@ body {
 }
 
 .slider-container {
-  width: 90%;
-  max-width: 480px;
-  height: 480px;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
   background: white;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  box-shadow: none;
   overflow: hidden;
   position: relative;
 }
-
 .slides {
   display: flex;
   width: 400%;
