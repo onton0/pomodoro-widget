@@ -1,3 +1,4 @@
+
 const slides = document.querySelector('.slides');
 const dots = document.querySelectorAll('.dot');
 const leftBtn = document.querySelector('.nav.left');
@@ -12,17 +13,23 @@ let isRunning = [false, false, false, false];
 function formatTime(seconds) {
   const mins = String(Math.floor(seconds / 60)).padStart(2, "0");
   const secs = String(seconds % 60).padStart(2, "0");
-  return \`\${mins}:\${secs}\`;
+  return `${mins}:${secs}`;
 }
 
 function updateTimerDisplay(index) {
-  const timerEl = document.getElementById(\`timer\${index}\`);
+  const timerEl = document.getElementById(`timer${index}`);
   if (timerEl) timerEl.textContent = formatTime(timers[index]);
 }
 
 function startTimer(index) {
-  if (isRunning[index]) return;
+  if (isRunning[index]) {
+    clearInterval(intervalIDs[index]);
+    isRunning[index] = false;
+    document.querySelectorAll('.start')[index].textContent = "Start";
+    return;
+  }
   isRunning[index] = true;
+  document.querySelectorAll('.start')[index].textContent = "Pause";
   intervalIDs[index] = setInterval(() => {
     if (timers[index] > 0) {
       timers[index]--;
@@ -61,7 +68,7 @@ document.querySelectorAll('.reset').forEach(btn => {
 });
 
 function updateSlide() {
-  slides.style.transform = \`translateX(-\${currentIndex * 100}%)\`;
+  slides.style.transform = `translateX(-${currentIndex * 100}%)`;
   dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
 }
 
@@ -69,13 +76,12 @@ leftBtn.addEventListener('click', () => {
   currentIndex = (currentIndex - 1 + 4) % 4;
   updateSlide();
 });
-
 rightBtn.addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % 4;
   updateSlide();
 });
 
-// Editable custom timer
+// Editable timer
 const editableTimer = document.getElementById("timer3");
 editableTimer.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
@@ -89,9 +95,7 @@ editableTimer.addEventListener("keydown", (e) => {
     } else if (parts.length === 2) {
       const mins = parseInt(parts[0]);
       const secs = parseInt(parts[1]);
-      if (!isNaN(mins) && !isNaN(secs)) {
-        totalSeconds = mins * 60 + secs;
-      }
+      if (!isNaN(mins) && !isNaN(secs)) totalSeconds = mins * 60 + secs;
     }
     if (totalSeconds > 0) {
       timers[3] = totalSeconds;
@@ -103,20 +107,15 @@ editableTimer.addEventListener("keydown", (e) => {
   }
 });
 
-timers.forEach((_, i) => updateTimerDisplay(i));
-updateSlide();
-
-// SETTINGS: Color pickers logic
+// Color Settings
 document.querySelectorAll(".settings-btn").forEach((btn, index) => {
   btn.addEventListener("click", () => {
     const panel = btn.parentElement.nextElementSibling;
     panel.classList.toggle("hidden");
-
     const colorText = panel.querySelector("#colorText");
     const colorBg = panel.querySelector("#colorBg");
     const hexText = panel.querySelector("#hexText");
     const hexBg = panel.querySelector("#hexBg");
-
     const slide = btn.closest(".slide");
     colorText.value = rgbToHex(getComputedStyle(slide).color);
     colorBg.value = rgbToHex(getComputedStyle(slide).backgroundColor);
@@ -127,19 +126,16 @@ document.querySelectorAll(".settings-btn").forEach((btn, index) => {
       slide.style.color = colorText.value;
       hexText.value = colorText.value;
     });
-
     colorBg.addEventListener("input", () => {
       slide.style.backgroundColor = colorBg.value;
       hexBg.value = colorBg.value;
     });
-
     hexText.addEventListener("change", () => {
       if (/^#([0-9A-F]{3}){1,2}$/i.test(hexText.value)) {
         slide.style.color = hexText.value;
         colorText.value = hexText.value;
       }
     });
-
     hexBg.addEventListener("change", () => {
       if (/^#([0-9A-F]{3}){1,2}$/i.test(hexBg.value)) {
         slide.style.backgroundColor = hexBg.value;
@@ -152,10 +148,9 @@ document.querySelectorAll(".settings-btn").forEach((btn, index) => {
 function rgbToHex(rgb) {
   const result = rgb.match(/\d+/g);
   if (!result || result.length < 3) return "#000000";
-  return (
-    "#" +
-    result.slice(0, 3)
-      .map(x => parseInt(x).toString(16).padStart(2, "0"))
-      .join("")
-  );
+  return "#" + result.slice(0, 3).map(x => parseInt(x).toString(16).padStart(2, "0")).join("");
 }
+
+// Init
+timers.forEach((_, i) => updateTimerDisplay(i));
+updateSlide();

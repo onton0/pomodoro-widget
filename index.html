@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sliding Pomodoro Timer</title>
+  <title>Pomodoro Widget</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="slider-container">
     <div class="slides">
+      <!-- Pomodoro -->
       <div class="slide" data-time="1500">
         <h2>Pomodoro</h2>
         <div class="timer" id="timer0">25:00</div>
@@ -18,17 +19,12 @@
           <button class="settings-btn">⚙️</button>
         </div>
         <div class="settings-panel hidden">
-          <label>
-            Color 1 (Text): <input type="color" id="colorText" />
-            <input type="text" id="hexText" placeholder="#000000" maxlength="7" />
-          </label>
-          <label>
-            Color 2 (Background): <input type="color" id="colorBg" />
-            <input type="text" id="hexBg" placeholder="#ffffff" maxlength="7" />
-          </label>
-        </div>
+          <label>Color 1 (Text): <input type="color" id="colorText"><input type="text" id="hexText" placeholder="#000000"></label>
+          <label>Color 2 (Background): <input type="color" id="colorBg"><input type="text" id="hexBg" placeholder="#ffffff"></label>
         </div>
       </div>
+
+      <!-- Short Break -->
       <div class="slide" data-time="300">
         <h2>Short Break</h2>
         <div class="timer" id="timer1">05:00</div>
@@ -38,17 +34,12 @@
           <button class="settings-btn">⚙️</button>
         </div>
         <div class="settings-panel hidden">
-          <label>
-            Color 1 (Text): <input type="color" id="colorText" />
-            <input type="text" id="hexText" placeholder="#000000" maxlength="7" />
-          </label>
-          <label>
-            Color 2 (Background): <input type="color" id="colorBg" />
-            <input type="text" id="hexBg" placeholder="#ffffff" maxlength="7" />
-          </label>
-        </div>
+          <label>Color 1 (Text): <input type="color" id="colorText"><input type="text" id="hexText" placeholder="#000000"></label>
+          <label>Color 2 (Background): <input type="color" id="colorBg"><input type="text" id="hexBg" placeholder="#ffffff"></label>
         </div>
       </div>
+
+      <!-- Long Break -->
       <div class="slide" data-time="900">
         <h2>Long Break</h2>
         <div class="timer" id="timer2">15:00</div>
@@ -58,17 +49,12 @@
           <button class="settings-btn">⚙️</button>
         </div>
         <div class="settings-panel hidden">
-          <label>
-            Color 1 (Text): <input type="color" id="colorText" />
-            <input type="text" id="hexText" placeholder="#000000" maxlength="7" />
-          </label>
-          <label>
-            Color 2 (Background): <input type="color" id="colorBg" />
-            <input type="text" id="hexBg" placeholder="#ffffff" maxlength="7" />
-          </label>
-        </div>
+          <label>Color 1 (Text): <input type="color" id="colorText"><input type="text" id="hexText" placeholder="#000000"></label>
+          <label>Color 2 (Background): <input type="color" id="colorBg"><input type="text" id="hexBg" placeholder="#ffffff"></label>
         </div>
       </div>
+
+      <!-- Custom -->
       <div class="slide">
         <h2>Custom</h2>
         <div class="timer editable" id="timer3" contenteditable="true">00:00</div>
@@ -78,17 +64,12 @@
           <button class="settings-btn">⚙️</button>
         </div>
         <div class="settings-panel hidden">
-          <label>
-            Color 1 (Text): <input type="color" id="colorText" />
-            <input type="text" id="hexText" placeholder="#000000" maxlength="7" />
-          </label>
-          <label>
-            Color 2 (Background): <input type="color" id="colorBg" />
-            <input type="text" id="hexBg" placeholder="#ffffff" maxlength="7" />
-          </label>
+          <label>Color 1 (Text): <input type="color" id="colorText"><input type="text" id="hexText" placeholder="#000000"></label>
+          <label>Color 2 (Background): <input type="color" id="colorBg"><input type="text" id="hexBg" placeholder="#ffffff"></label>
         </div>
       </div>
     </div>
+
     <button class="nav left">&#10094;</button>
     <button class="nav right">&#10095;</button>
     <div class="dots">

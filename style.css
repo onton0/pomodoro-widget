@@ -1,6 +1,14 @@
+
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: sans-serif;
+  background: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,6 +16,17 @@ body {
   background: #f7f7f7;
 }
 .slider-container {
+  width: 90%;
+  max-width: 480px;
+  height: 480px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -16,23 +35,33 @@ body {
 }
 .slides {
   display: flex;
+  width: 400%;
+  height: 100%;
+  transition: transform 0.4s ease-in-out;
+  display: flex;
   transition: transform 0.4s ease-in-out;
   width: 400vw;
 }
 .slide {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100vw;
   height: 100vh;
   flex-shrink: 0;
-  box-sizing: border-box;
   padding: 40px;
+  box-sizing: border-box;
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
 }
 .timer {
   font-size: 80px;
@@ -43,26 +72,23 @@ h2 {
   outline: none;
   border: 2px dashed transparent;
   transition: border 0.2s;
-  cursor: text;
 }
 .timer.editable:focus {
   border: 2px dashed #aaa;
 }
 .buttons {
   display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 20px;
+  gap: 10px;
+  margin-top: 10px;
 }
 button {
-  font-size: 18px;
-  padding: 14px 24px;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 999px;
   border: none;
-  border-radius: 9999px;
   background: black;
   color: white;
   cursor: pointer;
-  transition: background 0.3s ease;
 }
 button:hover {
   background: #333;
@@ -70,10 +96,9 @@ button:hover {
 .nav {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  font-size: 30px;
   background: transparent;
   border: none;
-  font-size: 24px;
   cursor: pointer;
   color: #999;
 }
@@ -95,12 +120,10 @@ button:hover {
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
-  transition: background-color 0.3s ease;
 }
 .dot.active {
   background-color: #000;
 }
-
 .settings-panel {
   background: #eee;
   border: 1px solid #ccc;
@@ -121,7 +144,6 @@ button:hover {
 .settings-panel input[type="text"] {
   width: 100px;
   padding: 4px;
-  font-size: 14px;
 }
 .settings-btn {
   font-size: 18px;
