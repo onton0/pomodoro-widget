@@ -39,11 +39,10 @@ body {
 }
 
 .timer {
-  font-size: 80px;
+  font-size: 48px;
   font-weight: bold;
   margin: 20px 0;
 }
-
 .timer.editable {
   outline: none;
   border: 2px dashed transparent;
