@@ -11,77 +11,74 @@
     <div class="slides">
       <!-- Pomodoro -->
       <div class="slide" data-time="1500">
-      <div class="content-box">
-        <h2>Pomodoro</h2>
-        <div class="timer" id="timer0">25:00</div>
-        <div class="buttons">
-          <button class="start" data-index="0">Start</button>
-          <button class="reset" data-index="0">Reset</button>
-          <button class="settings-btn">⚙️</button>
-        </div>
-        <div class="settings-panel hidden">
-          <label>Color 1 (Text): <input type="color" id="colorText"><input type="text" id="hexText" placeholder="#000000"></label>
-          <label>Color 2 (Background): <input type="color" id="colorBg"><input type="text" id="hexBg" placeholder="#ffffff"></label>
+        <div class="content-box">
+          <h2>Pomodoro</h2>
+          <div class="timer" id="timer0">25:00</div>
+          <div class="buttons">
+            <button class="start" data-index="0">Start</button>
+            <button class="reset" data-index="0">Reset</button>
+            <button class="settings-btn">⚙️</button>
+          </div>
+          <div class="settings-panel hidden">
+            <label>Color 1 (Text): <input type="color" id="colorText"><input type="text" id="hexText" placeholder="#000000"></label>
+            <label>Color 2 (Background): <input type="color" id="colorBg"><input type="text" id="hexBg" placeholder="#ffffff"></label>
+          </div>
         </div>
       </div>
-      </div>
-
 
       <!-- Short Break -->
       <div class="slide" data-time="300">
-      <div class="content-box">
-
-        <h2>Short Break</h2>
-        <div class="timer" id="timer1">05:00</div>
-        <div class="buttons">
-          <button class="start" data-index="1">Start</button>
-          <button class="reset" data-index="1">Reset</button>
-          <button class="settings-btn">⚙️</button>
-        </div>
-        <div class="settings-panel hidden">
-          <label>Color 1 (Text): <input type="color" id="colorText"><input type="text" id="hexText" placeholder="#000000"></label>
-          <label>Color 2 (Background): <input type="color" id="colorBg"><input type="text" id="hexBg" placeholder="#ffffff"></label>
+        <div class="content-box">
+          <h2>Short Break</h2>
+          <div class="timer" id="timer1">05:00</div>
+          <div class="buttons">
+            <button class="start" data-index="1">Start</button>
+            <button class="reset" data-index="1">Reset</button>
+            <button class="settings-btn">⚙️</button>
+          </div>
+          <div class="settings-panel hidden">
+            <label>Color 1 (Text): <input type="color" id="colorText"><input type="text" id="hexText" placeholder="#000000"></label>
+            <label>Color 2 (Background): <input type="color" id="colorBg"><input type="text" id="hexBg" placeholder="#ffffff"></label>
+          </div>
         </div>
       </div>
-       </div>
 
       <!-- Long Break -->
       <div class="slide" data-time="900">
-      <div class="content-box">
-
-        <h2>Long Break</h2>
-        <div class="timer" id="timer2">15:00</div>
-        <div class="buttons">
-          <button class="start" data-index="2">Start</button>
-          <button class="reset" data-index="2">Reset</button>
-          <button class="settings-btn">⚙️</button>
-        </div>
-        <div class="settings-panel hidden">
-          <label>Color 1 (Text): <input type="color" id="colorText"><input type="text" id="hexText" placeholder="#000000"></label>
-          <label>Color 2 (Background): <input type="color" id="colorBg"><input type="text" id="hexBg" placeholder="#ffffff"></label>
+        <div class="content-box">
+          <h2>Long Break</h2>
+          <div class="timer" id="timer2">15:00</div>
+          <div class="buttons">
+            <button class="start" data-index="2">Start</button>
+            <button class="reset" data-index="2">Reset</button>
+            <button class="settings-btn">⚙️</button>
+          </div>
+          <div class="settings-panel hidden">
+            <label>Color 1 (Text): <input type="color" id="colorText"><input type="text" id="hexText" placeholder="#000000"></label>
+            <label>Color 2 (Background): <input type="color" id="colorBg"><input type="text" id="hexBg" placeholder="#ffffff"></label>
+          </div>
         </div>
       </div>
-       </div>
 
       <!-- Custom -->
       <div class="slide">
-      <div class="content-box">
-
-        <h2>Custom</h2>
-        <div class="timer editable" id="timer3" contenteditable="true">00:00</div>
-        <div class="buttons">
-          <button class="start" data-index="3">Start</button>
-          <button class="reset" data-index="3">Reset</button>
-          <button class="settings-btn">⚙️</button>
-        </div>
-        <div class="settings-panel hidden">
-          <label>Color 1 (Text): <input type="color" id="colorText"><input type="text" id="hexText" placeholder="#000000"></label>
-          <label>Color 2 (Background): <input type="color" id="colorBg"><input type="text" id="hexBg" placeholder="#ffffff"></label>
+        <div class="content-box">
+          <h2>Custom</h2>
+          <div class="timer editable" id="timer3" contenteditable="true">00:00</div>
+          <div class="buttons">
+            <button class="start" data-index="3">Start</button>
+            <button class="reset" data-index="3">Reset</button>
+            <button class="settings-btn">⚙️</button>
+          </div>
+          <div class="settings-panel hidden">
+            <label>Color 1 (Text): <input type="color" id="colorText"><input type="text" id="hexText" placeholder="#000000"></label>
+            <label>Color 2 (Background): <input type="color" id="colorBg"><input type="text" id="hexBg" placeholder="#ffffff"></label>
+          </div>
         </div>
       </div>
-    </div>
-     
+    </div> <!-- END .slides -->
 
+    <!-- ✅ Arrows and dots OUTSIDE .slides -->
     <button class="nav left">&#10094;</button>
     <button class="nav right">&#10095;</button>
     <div class="dots">
@@ -90,7 +87,8 @@
       <span class="dot"></span>
       <span class="dot"></span>
     </div>
-  </div>
+  </div> <!-- END .slider-container -->
+
   <audio id="alarmSound" src="https://www.soundjay.com/buttons/sounds/beep-07.mp3" preload="auto"></audio>
   <script src="script.js"></script>
 </body>
