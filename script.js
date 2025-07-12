@@ -25,7 +25,7 @@ function updateDisplay(index) {
 }
 
 function updateSlide() {
-  slides.style.transform = `translateX(-${currentIndex * 100}vw)`;
+  slides.style.transform = `translateX(-${currentIndex * 100}%)`;
   dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
 }
 
