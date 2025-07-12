@@ -9,14 +9,10 @@ body {
 }
 
 .slider-container {
-  width: 860px;
-  height: 570px;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   position: relative;
-  margin: auto;
 }
 
 .slides {
