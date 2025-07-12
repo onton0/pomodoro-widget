@@ -9,7 +9,7 @@
 <body>
   <div class="slider-container">
     <div class="slides">
-      <!-- Pomodoro -->
+      <!-- Slide 1: Pomodoro -->
       <div class="slide" data-time="1500">
         <div class="content-box">
           <h2>Pomodoro</h2>
@@ -17,16 +17,16 @@
           <div class="buttons">
             <button class="start" data-index="0">Start</button>
             <button class="reset" data-index="0">Reset</button>
-            <button class="settings-btn" data-index="0">⚙️</button>
+            <button class="settings-btn">⚙️</button>
           </div>
-          <div class="settings-panel hidden" data-index="0">
-            <label>Color 1 (Text): <input type="color" id="colorText-0"><input type="text" id="hexText-0" placeholder="#000000"></label>
-            <label>Color 2 (Background): <input type="color" id="colorBg-0"><input type="text" id="hexBg-0" placeholder="#ffffff"></label>
+          <div class="settings-panel hidden">
+            <label>Color 1 (Text): <input type="color" id="colorText"><input type="text" id="hexText" placeholder="#000000"></label>
+            <label>Color 2 (Background): <input type="color" id="colorBg"><input type="text" id="hexBg" placeholder="#ffffff"></label>
           </div>
         </div>
       </div>
 
-      <!-- Short Break -->
+      <!-- Slide 2: Short Break -->
       <div class="slide" data-time="300">
         <div class="content-box">
           <h2>Short Break</h2>
@@ -34,16 +34,16 @@
           <div class="buttons">
             <button class="start" data-index="1">Start</button>
             <button class="reset" data-index="1">Reset</button>
-            <button class="settings-btn" data-index="1">⚙️</button>
+            <button class="settings-btn">⚙️</button>
           </div>
-          <div class="settings-panel hidden" data-index="1">
-            <label>Color 1 (Text): <input type="color" id="colorText-1"><input type="text" id="hexText-1" placeholder="#000000"></label>
-            <label>Color 2 (Background): <input type="color" id="colorBg-1"><input type="text" id="hexBg-1" placeholder="#ffffff"></label>
+          <div class="settings-panel hidden">
+            <label>Color 1 (Text): <input type="color" id="colorText"><input type="text" id="hexText" placeholder="#000000"></label>
+            <label>Color 2 (Background): <input type="color" id="colorBg"><input type="text" id="hexBg" placeholder="#ffffff"></label>
           </div>
         </div>
       </div>
 
-      <!-- Long Break -->
+      <!-- Slide 3: Long Break -->
       <div class="slide" data-time="900">
         <div class="content-box">
           <h2>Long Break</h2>
@@ -51,35 +51,38 @@
           <div class="buttons">
             <button class="start" data-index="2">Start</button>
             <button class="reset" data-index="2">Reset</button>
-            <button class="settings-btn" data-index="2">⚙️</button>
+            <button class="settings-btn">⚙️</button>
           </div>
-          <div class="settings-panel hidden" data-index="2">
-            <label>Color 1 (Text): <input type="color" id="colorText-2"><input type="text" id="hexText-2" placeholder="#000000"></label>
-            <label>Color 2 (Background): <input type="color" id="colorBg-2"><input type="text" id="hexBg-2" placeholder="#ffffff"></label>
+          <div class="settings-panel hidden">
+            <label>Color 1 (Text): <input type="color" id="colorText"><input type="text" id="hexText" placeholder="#000000"></label>
+            <label>Color 2 (Background): <input type="color" id="colorBg"><input type="text" id="hexBg" placeholder="#ffffff"></label>
           </div>
         </div>
       </div>
 
-      <!-- Custom -->
-      <div class="slide" data-time="0">
+      <!-- Slide 4: Custom Timer -->
+      <div class="slide">
         <div class="content-box">
           <h2>Custom</h2>
           <div class="timer editable" id="timer3" contenteditable="true">00:00</div>
           <div class="buttons">
             <button class="start" data-index="3">Start</button>
             <button class="reset" data-index="3">Reset</button>
-            <button class="settings-btn" data-index="3">⚙️</button>
+            <button class="settings-btn">⚙️</button>
           </div>
-          <div class="settings-panel hidden" data-index="3">
-            <label>Color 1 (Text): <input type="color" id="colorText-3"><input type="text" id="hexText-3" placeholder="#000000"></label>
-            <label>Color 2 (Background): <input type="color" id="colorBg-3"><input type="text" id="hexBg-3" placeholder="#ffffff"></label>
+          <div class="settings-panel hidden">
+            <label>Color 1 (Text): <input type="color" id="colorText"><input type="text" id="hexText" placeholder="#000000"></label>
+            <label>Color 2 (Background): <input type="color" id="colorBg"><input type="text" id="hexBg" placeholder="#ffffff"></label>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Navigation Arrows -->
     <button class="nav left">&#10094;</button>
     <button class="nav right">&#10095;</button>
+
+    <!-- Slide Indicator Dots -->
     <div class="dots">
       <span class="dot active"></span>
       <span class="dot"></span>
@@ -87,6 +90,7 @@
       <span class="dot"></span>
     </div>
   </div>
+
   <audio id="alarmSound" src="https://www.soundjay.com/buttons/sounds/beep-07.mp3" preload="auto"></audio>
   <script src="script.js"></script>
 </body>
