@@ -9,19 +9,15 @@ body {
 }
 
 .slider-container {
-  width: 90%;
-  max-width: 480px;
-  height: 480px;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   position: relative;
 }
 
 .slides {
   display: flex;
-  width: 400%;
+  width: 400vw;  /* match 4 slides * 100vw */
   height: 100%;
   transition: transform 0.4s ease-in-out;
 }
